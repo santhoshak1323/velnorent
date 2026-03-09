@@ -588,6 +588,75 @@ html[data-theme="dark"] .nav-link:focus-visible {
   transform: translateY(-4px) scale(1.02);
 }
 
+.home-gallery-section {
+  background:
+    radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--color-secondary) 22%, transparent) 0%, transparent 44%),
+    radial-gradient(circle at 88% 82%, color-mix(in srgb, var(--color-primary) 25%, transparent) 0%, transparent 42%);
+}
+
+.home-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.home-gallery-card {
+  grid-column: span 4;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.1rem;
+  min-height: 270px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.home-gallery-card--tall {
+  grid-column: span 5;
+  grid-row: span 2;
+  min-height: 560px;
+}
+
+.home-gallery-card--wide {
+  grid-column: span 7;
+}
+
+.home-gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.home-gallery-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 12, 10, 0.88), rgba(7, 12, 10, 0.25) 58%, transparent 100%);
+}
+
+.home-gallery-card__content {
+  position: absolute;
+  inset: auto 1rem 1rem 1rem;
+  z-index: 2;
+  color: #fff;
+}
+
+.home-gallery-card__content h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.home-gallery-card__content p {
+  margin: 0;
+  font-size: 0.92rem;
+  opacity: 0.95;
+}
+
+.home-gallery-card:hover img {
+  transform: scale(1.08);
+}
+
 .contact-list {
   color: var(--muted);
   display: grid;
@@ -734,6 +803,27 @@ html[data-theme="dark"] .nav-link:focus-visible {
     display: none;
   }
 
+  .home-gallery-card,
+  .home-gallery-card--tall,
+  .home-gallery-card--wide {
+    grid-column: span 6;
+    grid-row: auto;
+    min-height: 300px;
+  }
+
+}
+
+@media (max-width: 767.98px) {
+  .home-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-gallery-card,
+  .home-gallery-card--tall,
+  .home-gallery-card--wide {
+    grid-column: auto;
+    min-height: 260px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
